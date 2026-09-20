@@ -6,10 +6,15 @@ exit value, execution metadata, and the expected final external RAM image:
 ```text
 correctness_example/
 ├── program.data
+├── program.S
 ├── expected.txt
 ├── metrics.json
 └── expected.memory
 ```
+
+`program.S` is a disassembly snapshot generated from the executable sections of
+the linked ELF. It exists for auditing and is not loaded by the simulator, which
+loads only `program.data`.
 
 `expected.memory` describes the complete 256 KiB external RAM after the program
 writes its result to the exit MMIO address `0x80000000`. The file uses the same
